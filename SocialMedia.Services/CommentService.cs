@@ -1,4 +1,5 @@
-﻿using SocialMedia.Models.CommentModels;
+﻿using SocialMedia.Data;
+using SocialMedia.Models.CommentModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,19 @@ namespace SocialMedia.Services
 
         public bool CreateComment(CommentCreate model)
         {
-            var entity = 
-                new CommentCreate()
+            var entity =
+                new Comment()
                 {
-                    Id = model.
-                }
+                    CommentText = model.CommentText,
+                    CommentAuthor = _userId,
+                    PostId = model.PostId,
+                };
+
+            using (var context = new ApplicationDbContext())
+            {
+                context.Comments.Add(entity);
+                return context.SaveChanges() == 1;
+            }
         }
     }
 }
