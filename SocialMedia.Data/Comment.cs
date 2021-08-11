@@ -11,13 +11,13 @@ namespace SocialMedia.Data
     public class Comment
     {
         [Key]
-        public int Id { get; set; }
-
-        [Required, MaxLength(200, ErrorMessage = "Comment is too long.")]
-        public string Text { get; set; }
+        public int CommentId { get; set; }
 
         [Required]
-        public Guid Author { get; set; }
+        public string CommentText { get; set; }
+
+        [Required]
+        public Guid CommentAuthor { get; set; }
 
         public virtual List<Reply> Replies { get; set; } = new List<Reply>();
 
