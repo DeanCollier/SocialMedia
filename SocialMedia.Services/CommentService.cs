@@ -17,6 +17,7 @@ namespace SocialMedia.Services
             _userId = userId;
         }
 
+        // POST
         public bool CreateComment(CommentCreate model)
         {
             var entity =
@@ -31,6 +32,28 @@ namespace SocialMedia.Services
             {
                 context.Comments.Add(entity);
                 return context.SaveChanges() == 1;
+            }
+        }
+
+        // GET ALL
+        public IEnumerable<CommentListItem> GetComments()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query =
+                    context
+                        .Comments
+                        .Where(entity => entity.CommentAuthor == _userId)
+                        .Select(
+                            entity =>
+                                new CommentListItem
+                                {
+                                    CommentId = entity.CommentId,
+                                    PostId = entity.PostId,
+                                    NumberOfReplies = entity.Replies.Count()
+                                }
+                        );
+                return query.ToArray();
             }
         }
     }
