@@ -34,6 +34,8 @@ namespace SocialMedia.WebAPI.Controllers
             return Ok(likes);
         }
 
+        [HttpPost]
+        [Route("api/Like")]
         public IHttpActionResult Post(LikeCreate like)
         {
             if (!ModelState.IsValid)
