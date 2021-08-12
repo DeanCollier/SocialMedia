@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialMedia.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,11 +10,13 @@ namespace SocialMedia.Models.CommentModels
 {
     public class CommentDetail
     {   
-        [Required]
         public int CommentId { get; set; }
 
         public string CommentText { get; set; }
-    ////a;sdfja;sldkgha[w
+
+        public virtual List<Reply> Replies { get; set; }
+
+        public virtual Post Post { get; set; }
 
     }
 }
