@@ -24,6 +24,7 @@ namespace SocialMedia.Services
                 new Post()
                 {
                     PostId = model.PostId,
+
                     AuthorId = _userId,
                     Title = model.Title,
                     Text = model.Text,
@@ -88,10 +89,21 @@ namespace SocialMedia.Services
                     ctx
                         .Posts
                         .Single(e => e.PostId == model.PostId && e.AuthorId == _userId);
+                var com =
+                    ctx
+                        .Comments
+                        .Single(c => c.CommentId == model.CommentId && c.CommentAuthor == _userId);
+
+                var like =
+                    ctx
+                        .Likes
+                        .Single(l => l.LikeId == model.LikeId && l.LikeAuthor == _userId);
 
                 entity.Title = model.Title;
                 entity.Text = model.Text;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.Likes.Add(like);
+                entity.Comments.Add(com);
 
                 return ctx.SaveChanges() == 1;
             }
