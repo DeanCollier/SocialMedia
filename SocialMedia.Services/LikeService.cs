@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SocialMedia.Data;
+using SocialMedia.Models.LikeModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +10,11 @@ namespace SocialMedia.Services
 {
     public class LikeService
     {
-        private readonly Guid _postId;
+        private readonly Guid _userId;
 
-        public LikeService(Guid postId)
+        public LikeService(Guid userId)
         {
-            _postId = postId;
+            _userId = userId;
         }
 
         public bool CreateNote(LikeCreate model)
@@ -20,34 +22,31 @@ namespace SocialMedia.Services
             var entity =
                 new Like()
                 {
-                    AuthorId = _postId,
-                    Title = model.Title,
-                    Text = model.Text,
-                    CreatedUtc = DateTimeOffset.Now
+                    LikeAuthor = _userId,
+                    PostId = model.PostId
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Posts.Add(entity);
+                ctx.Likes.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<PostListItem> GetPosts()
+        public IEnumerable<LikeListItem> GetLikesByPostId(int postId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Posts
-                        .Where(e => e.AuthorId == _userId)
+                        .Likes
+                        .Where(e => e.LikeAuthor == _userId && e.PostId == postId)
                         .Select(
                             e =>
-                                new PostListItem
+                                new LikeListItem
                                 {
                                     PostId = e.PostId,
-                                    Title = e.Title,
-                                    CreatedUtc = e.CreatedUtc
+                                    LikeId = e.LikeId
                                 }
 
                         );
@@ -55,54 +54,52 @@ namespace SocialMedia.Services
             }
         }
 
-        public PostDetail GetPostById(int id)
+        public IEnumerable<LikeDetail> GetLikeByAuthor()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
+                var query =
                     ctx
-                        .Posts
-                        .Single(e => e.PostId == id && e.AuthorId == _userId);
-                return
-                    new PostDetail
-                    {
-                        PostId = entity.PostId,
-                        Title = entity.Title,
-                        Text = entity.Text,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        .Likes
+                        .Where(e => e.LikeAuthor == _userId)
+                        .Select(
+                            e =>
+                                new LikeDetail
+                                {
+                                    Post = e.Post,
+                                    LikeId = e.LikeId
+                                }
 
-                    };
+                        );
+                return query.ToArray();
             }
         }
 
-        public bool UpdatePost(PostEdit model)
+        public bool UpdateLike(LikeEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Posts
-                        .Single(e => e.PostId == model.PostId && e.AuthorId == _userId);
+                        .Likes
+                        .Single(e => e.LikeId == model.LikeId && e.LikeAuthor == _userId);
 
-                entity.Title = model.Title;
-                entity.Text = model.Text;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.PostId = model.PostId;
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public bool DeletePost(int postId)
+        public bool DeleteLike(int likeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Posts
-                        .Single(e => e.PostId == postId && e.AuthorId == _userId);
+                        .Likes
+                        .Single(e => e.LikeId == likeId && e.LikeAuthor == _userId);
 
-                ctx.Posts.Remove(entity);
+                ctx.Likes.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
