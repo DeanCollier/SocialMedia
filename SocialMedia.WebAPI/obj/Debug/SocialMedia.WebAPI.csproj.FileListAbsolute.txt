@@ -121,3 +121,9 @@ C:\ElevenFiftyProjects\SocialMedia\SocialMedia.WebAPI\obj\Debug\SocialMedia.WebA
 C:\ElevenFiftyProjects\SocialMedia\SocialMedia.WebAPI\obj\Debug\SocialMedia.WebAPI.csproj.CoreCompileInputs.cache
 C:\ElevenFiftyProjects\SocialMedia\SocialMedia.WebAPI\obj\Debug\SocialMedia.WebAPI.dll
 C:\ElevenFiftyProjects\SocialMedia\SocialMedia.WebAPI\obj\Debug\SocialMedia.WebAPI.pdb
+D:\1150\Week10\SocialMedia\SocialMedia.WebAPI\bin\SocialMedia.Models.dll
+D:\1150\Week10\SocialMedia\SocialMedia.WebAPI\bin\SocialMedia.Services.dll
+D:\1150\Week10\SocialMedia\SocialMedia.WebAPI\bin\SocialMedia.Models.pdb
+D:\1150\Week10\SocialMedia\SocialMedia.WebAPI\bin\SocialMedia.Models.dll.config
+D:\1150\Week10\SocialMedia\SocialMedia.WebAPI\bin\SocialMedia.Services.pdb
+D:\1150\Week10\SocialMedia\SocialMedia.WebAPI\bin\SocialMedia.Services.dll.config
