@@ -9,6 +9,7 @@ namespace SocialMedia.Models.PostModels
 {
     public class PostCreate
     {
+        public int PostId { get; set; }
         [Required]
         [MinLength(2, ErrorMessage = "Please enter at least two characters.")]
         [MaxLength(100, ErrorMessage = "There are too many characters in this field")]

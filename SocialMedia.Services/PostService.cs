@@ -2,6 +2,7 @@
 using SocialMedia.Models.PostModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,15 @@ namespace SocialMedia.Services
             _userId = userId;
         }
 
-        public bool CreateNote(PostCreate model)
+        public bool CreatePost(PostCreate model)
         {
             var entity =
                 new Post()
                 {
+<<<<<<< HEAD
+=======
+                    PostId = model.PostId,
+>>>>>>> 1fb233df7460b00a4ba763276446653ae14662e4
                     AuthorId = _userId,
                     Title = model.Title,
                     Text = model.Text,
