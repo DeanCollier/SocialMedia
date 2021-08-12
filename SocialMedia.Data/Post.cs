@@ -18,8 +18,8 @@ namespace SocialMedia.Data
         [Required]
         public string Text { get; set; }
         [Required]
-        public virtual List<string> Comments { get; set; }
-        public virtual List<string> Likes { get; set; }
+        public virtual List<Comment> Comments { get; set; }
+        public virtual List<Like> Likes { get; set; }
 
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }

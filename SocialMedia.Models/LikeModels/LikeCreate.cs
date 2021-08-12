@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SocialMedia.Models.LikeModels
 {
-    class LikeCreate
+    public class LikeCreate
     {
+        public int MyProperty { get; set; }
     }
 }
