@@ -14,3 +14,6 @@ D:\1150\Week10\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.cspro
 D:\1150\Week10\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.csproj.CopyComplete
 D:\1150\Week10\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.dll
 D:\1150\Week10\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.pdb
+D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.dll
+D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.pdb
+D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.dll.config
