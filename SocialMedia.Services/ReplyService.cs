@@ -87,14 +87,14 @@ namespace SocialMedia.Services
             }
         }
 
-        public bool DeleteReply(int replyID)
+        public bool DeleteReply(int replyId)
         {
             using (var context = new ApplicationDbContext())
             {
                 var entity =
                     context
                         .Replies
-                        .Single(entity => entity.ReplyId == replyID && entity.ReplyAuthorId == _userId);
+                        .Single(entity => entity.ReplyId == replyId && entity.ReplyAuthorId == _userId);
 
                 context.Replies.Remove(entity);
 
