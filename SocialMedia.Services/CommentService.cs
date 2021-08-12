@@ -93,5 +93,20 @@ namespace SocialMedia.Services
                 return context.SaveChanges() == 1;
             }
         }
+
+        // DELETE
+        public bool DeleteCommentById(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Comments
+                        .Single(e => e.CommentAuthor == _userId && e.CommentId == id);
+
+                context.Comments.Remove(entity);
+                return context.SaveChanges() == 1;
+            }
+        }
     }
 }
