@@ -13,7 +13,7 @@ namespace SocialMedia.Data
         [Key]
         public int LikeId { get; set; }
         [Required]
-        public Guid OwnerId { get; set; }
+        public Guid LikeAuthor { get; set; }
 
         [Required, ForeignKey(nameof(Post))]
         public int PostId { get; set; }

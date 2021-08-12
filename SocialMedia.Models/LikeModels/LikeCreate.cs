@@ -8,6 +8,5 @@ namespace SocialMedia.Models.LikeModels
 {
     public class LikeCreate
     {
-        public int MyProperty { get; set; }
     }
 }
