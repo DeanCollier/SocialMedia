@@ -1,6 +1,9 @@
 ﻿using System.Data.Entity;
+<<<<<<< HEAD
+=======
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
+>>>>>>> d58649c5f2d34c93215b28ac232f4ec00171a577
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -33,6 +36,9 @@ namespace SocialMedia.Data
             return new ApplicationDbContext();
         }
 
+<<<<<<< HEAD
+        public DbSet<Comment> Comments { get; set; }
+=======
         public DbSet<Post> Posts { get; set; } //
 
 
@@ -64,5 +70,6 @@ namespace SocialMedia.Data
         {
             HasKey(iur => iur.UserId);
         }
+>>>>>>> d58649c5f2d34c93215b28ac232f4ec00171a577
     }
 }
