@@ -25,7 +25,7 @@ namespace SocialMedia.Services
                 {
                     CommentText = model.CommentText,
                     CommentAuthor = _userId,
-                    PostId = model.PostId,
+                    PostId = model.PostId
                 };
 
             using (var context = new ApplicationDbContext())
@@ -54,6 +54,58 @@ namespace SocialMedia.Services
                                 }
                         );
                 return query.ToArray();
+            }
+        }
+
+        // GET
+        public CommentDetail GetCommentById(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Comments
+                        .Single(e => e.CommentAuthor == _userId && e.CommentId == id);
+
+                return
+                    new CommentDetail
+                    {
+                        CommentId = entity.CommentId,
+                        CommentText = entity.CommentText,
+                        Replies = entity.Replies,
+                        Post = entity.Post
+                    };
+            }
+        }
+
+        // PUT
+        public bool UpdateComment(CommentEdit model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Comments
+                        .Single(e => e.CommentId == model.CommentId && e.CommentAuthor == _userId);
+
+                entity.CommentText = model.CommentText;
+
+                return context.SaveChanges() == 1;
+            }
+        }
+
+        // DELETE
+        public bool DeleteCommentById(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Comments
+                        .Single(e => e.CommentAuthor == _userId && e.CommentId == id);
+
+                context.Comments.Remove(entity);
+                return context.SaveChanges() == 1;
             }
         }
     }
