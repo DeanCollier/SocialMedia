@@ -13,7 +13,7 @@ namespace SocialMedia.Models.CommentModels
         public int CommentId { get; set; }
 
         public string CommentText { get; set; }
-
+    ////a;sdfja;sldkgha[w
 
     }
 }

@@ -315,6 +315,14 @@
       <Project>{6E84FC77-8406-4CF8-8D48-E75C6BB90CEE}</Project>
       <Name>SocialMedia.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SocialMedia.Models\SocialMedia.Models.csproj">
+      <Project>{242DA49D-892A-42A8-8306-A64B3359CCD3}</Project>
+      <Name>SocialMedia.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialMedia.Services\SocialMedia.Services.csproj">
+      <Project>{3BE9DE11-85A0-4F53-B62E-345DA14B6719}</Project>
+      <Name>SocialMedia.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
