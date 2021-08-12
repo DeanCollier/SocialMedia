@@ -10,11 +10,11 @@ namespace SocialMedia.Services
 {
     public class PostService
     {
-        private readonly Guid _postId;
+        private readonly Guid _userId;
 
-        public PostService(Guid postId)
+        public PostService(Guid userId)
         {
-            _postId = postId;
+            _userId = userId;
         }
 
         public bool CreateNote(PostCreate model)
@@ -22,7 +22,7 @@ namespace SocialMedia.Services
             var entity =
                 new Post()
                 {
-                    PostId = _postId,
+                    AuthorId = _userId,
                     Title = model.Title,
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now
@@ -42,12 +42,12 @@ namespace SocialMedia.Services
                 var query =
                     ctx
                         .Posts
-                        .Where(e => e.PostId == _userId)
+                        .Where(e => e.AuthorId == _userId)
                         .Select(
                             e =>
                                 new PostListItem
                                 {
-                                    PostId = e.NoteId,
+                                    PostId = e.PostId,
                                     Title = e.Title,
                                     CreatedUtc = e.CreatedUtc
                                 }
@@ -64,13 +64,13 @@ namespace SocialMedia.Services
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == id && e.PostId == _userId);
+                        .Single(e => e.PostId == id && e.AuthorId == _userId);
                 return
                     new PostDetail
                     {
-                        PostId = entity.NoteId,
+                        PostId = entity.PostId,
                         Title = entity.Title,
-                        Text = entity.Content,
+                        Text = entity.Text,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
 
@@ -85,10 +85,10 @@ namespace SocialMedia.Services
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == model.PostId && e.PostId == _postId);
+                        .Single(e => e.PostId == model.PostId && e.AuthorId == _userId);
 
                 entity.Title = model.Title;
-                entity.Content = model.Text;
+                entity.Text = model.Text;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
@@ -102,7 +102,7 @@ namespace SocialMedia.Services
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == postId && e.PostId == _postId);
+                        .Single(e => e.PostId == postId && e.AuthorId == _userId);
 
                 ctx.Posts.Remove(entity);
 

@@ -33,3 +33,7 @@ D:\1150\Week10\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.csproj.Co
 D:\1150\Week10\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.csproj.CopyComplete
 D:\1150\Week10\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.dll
 D:\1150\Week10\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.pdb
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.csproj.AssemblyReference.cache
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.csproj.CoreCompileInputs.cache
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.dll
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Data\obj\Debug\SocialMedia.Data.pdb

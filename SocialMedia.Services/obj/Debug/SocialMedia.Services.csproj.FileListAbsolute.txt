@@ -14,3 +14,7 @@ D:\1150\Week10\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.c
 D:\1150\Week10\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.csproj.CopyComplete
 D:\1150\Week10\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.dll
 D:\1150\Week10\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.pdb
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.csproj.AssemblyReference.cache
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.csproj.CoreCompileInputs.cache
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.dll
+C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.pdb
