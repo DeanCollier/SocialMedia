@@ -25,7 +25,7 @@ namespace SocialMedia.Services
                 {
                     CommentText = model.CommentText,
                     CommentAuthor = _userId,
-                    PostId = model.PostId,
+                    PostId = model.PostId
                 };
 
             using (var context = new ApplicationDbContext())
@@ -54,6 +54,27 @@ namespace SocialMedia.Services
                                 }
                         );
                 return query.ToArray();
+            }
+        }
+
+        // GET
+        public CommentDetail GetCommentById(int id)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Comments
+                        .Single(e => e.CommentAuthor == _userId && e.CommentId == id);
+
+                return
+                    new CommentDetail
+                    {
+                        CommentId = entity.CommentId,
+                        CommentText = entity.CommentText,
+                        Replies = entity.Replies,
+                        Post = entity.Post
+                    };
             }
         }
     }
