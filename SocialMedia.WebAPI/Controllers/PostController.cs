@@ -26,7 +26,7 @@ namespace SocialMedia.WebAPI.Controllers
 
             var service = CreatePostService();
 
-            if (!service.CreateNote(post))
+            if (!service.CreatePost(post))
                 return InternalServerError();
 
             return Ok();
