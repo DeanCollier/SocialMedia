@@ -33,7 +33,8 @@ namespace SocialMedia.Data
             return new ApplicationDbContext();
         }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Post> Posts { get; set; } 
+        public DbSet<Post> Posts { get; set; }
+       // public DbSet<Post> Replies { get; set; }
 
 
 

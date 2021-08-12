@@ -21,6 +21,8 @@ namespace SocialMedia.WebAPI.Controllers
         }
 
         // POST
+        [HttpPost]
+        [Route("api/Comment")]
         public IHttpActionResult Post(CommentCreate model)
         {
             if (!ModelState.IsValid)
@@ -36,6 +38,8 @@ namespace SocialMedia.WebAPI.Controllers
         }
 
         // GET ALL
+        [HttpGet]
+        [Route("api/Comment")]
         public IHttpActionResult Get()
         {
             CommentService commentService = CreateCommentService();
@@ -44,6 +48,8 @@ namespace SocialMedia.WebAPI.Controllers
         }
 
         // GET BY ID
+        [HttpGet]
+        [Route("api/Comment/{id}")]
         public IHttpActionResult Get(int id)
         {
             CommentService commentService = CreateCommentService();
@@ -52,6 +58,8 @@ namespace SocialMedia.WebAPI.Controllers
         }
 
         // PUT BY ID
+        [HttpPut]
+        [Route("api/Comment/{id}")]
         public IHttpActionResult Put(int id, CommentEdit updatedComment)
         {
             if (!ModelState.IsValid)
@@ -69,6 +77,8 @@ namespace SocialMedia.WebAPI.Controllers
         }
 
         // DELETE
+        [HttpDelete]
+        [Route("api/Comment/{id}")]
         public IHttpActionResult Delete(int id)
         {
             CommentService commentService = CreateCommentService();
