@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialMedia.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace SocialMedia.Models.LikeModels
     {
         [Required]
         public int LikeId { get; set; }
+
+        public virtual Post Post { get; set; }
     }
 }

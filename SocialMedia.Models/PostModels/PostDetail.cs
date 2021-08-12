@@ -14,8 +14,8 @@ namespace SocialMedia.Models.PostModels
         public Guid AuthorId { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
-        public virtual List<string> Comments { get; set; }
-        public virtual List<string> Likes { get; set; }
+        public virtual List<Comment> Comments { get; set; }
+        public virtual List<Like> Likes { get; set; }
 
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name = "Modified")]
