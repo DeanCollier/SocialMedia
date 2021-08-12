@@ -77,5 +77,21 @@ namespace SocialMedia.Services
                     };
             }
         }
+
+        // PUT
+        public bool UpdateComment(CommentEdit model)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Comments
+                        .Single(e => e.CommentId == model.CommentId && e.CommentAuthor == _userId);
+
+                entity.CommentText = model.CommentText;
+
+                return context.SaveChanges() == 1;
+            }
+        }
     }
 }
