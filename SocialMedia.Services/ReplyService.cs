@@ -41,7 +41,7 @@ namespace SocialMedia.Services
                 var query =
                     context
                         .Replies
-                        .Where(entity => entity.ReplyAuthorId == _userId)
+                        .Where(e => e.ReplyAuthorId == _userId)
                         .Select(
                             entity =>
                                 new ReplyListItem
@@ -61,7 +61,7 @@ namespace SocialMedia.Services
                 var entity =
                     context
                         .Replies
-                        .Single(entity => entity.ReplyId == id && entity.ReplyAuthorId == _userId);
+                        .Single(e => e.ReplyId == id && e.ReplyAuthorId == _userId);
 
                 return
                     new ReplyDetail
@@ -79,7 +79,7 @@ namespace SocialMedia.Services
                 var entity =
                     context
                         .Replies
-                        .Single(entity => entity.ReplyId == model.ReplyId && entity.ReplyAuthorId == _userId);
+                        .Single(e => e.ReplyId == model.ReplyId && e.ReplyAuthorId == _userId);
 
                 entity.ReplyText = model.ReplyText;
 
@@ -87,14 +87,14 @@ namespace SocialMedia.Services
             }
         }
 
-        public bool DeleteReply(int replyID)
+        public bool DeleteReply(int replyId)
         {
             using (var context = new ApplicationDbContext())
             {
                 var entity =
                     context
                         .Replies
-                        .Single(entity => entity.ReplyId == replyID && entity.ReplyAuthorId == _userId);
+                        .Single(e => e.ReplyId == replyId && e.ReplyAuthorId == _userId);
 
                 context.Replies.Remove(entity);
 
