@@ -30,3 +30,6 @@ C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Mode
 C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.csproj.CopyComplete
 C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.dll
 C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.pdb
+D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.dll
+D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.pdb
+D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.dll.config

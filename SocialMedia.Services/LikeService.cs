@@ -17,7 +17,7 @@ namespace SocialMedia.Services
             _userId = userId;
         }
 
-        public bool CreateNote(LikeCreate model)
+        public bool CreateLike(LikeCreate model)
         {
             var entity =
                 new Like()
