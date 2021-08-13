@@ -20,6 +20,9 @@ namespace SocialMedia.WebAPI.Controllers
 
         }
 
+
+        [HttpGet]
+        [Route("api/Like/{postId}")]
         public IHttpActionResult Get(int postId)
         {
             LikeService likeService = CreateLikeService();
@@ -27,6 +30,8 @@ namespace SocialMedia.WebAPI.Controllers
             return Ok(likes);
         }
 
+        [HttpGet]
+        [Route("api/Like")]
         public IHttpActionResult Get()
         {
             LikeService likeService = CreateLikeService();

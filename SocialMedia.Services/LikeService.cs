@@ -1,5 +1,6 @@
 ﻿using SocialMedia.Data;
 using SocialMedia.Models.LikeModels;
+using SocialMedia.Models.PostModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace SocialMedia.Services
                             e =>
                                 new LikeListItem
                                 {
-                                    PostId = e.PostId,
+                                    PostTitle = e.Post.Title,
                                     LikeId = e.LikeId
                                 }
 
@@ -66,11 +67,11 @@ namespace SocialMedia.Services
                             e =>
                                 new LikeDetail
                                 {
-                                    Post = e.Post,
+                                    PostTitle = e.Post.Title,
                                     LikeId = e.LikeId
                                 }
 
-                        );
+                        ) ;
                 return query.ToArray();
             }
         }

@@ -9,13 +9,12 @@ namespace SocialMedia.Models.ReplyModels
 {
     public class ReplyCreate
     {
-        public string ReplyText { get; set; }
-        public Guid ReplyAuthorId { get; set; }
-
         [Required]
         [MinLength(1, ErrorMessage = "Replies need to be at least one character.")]
         [MaxLength(200, ErrorMessage = "Replies cannot exceed 200 characters.")]
+        public string ReplyText { get; set; }
 
+        [Required]
         public int CommentId { get; set; }
     }
 }

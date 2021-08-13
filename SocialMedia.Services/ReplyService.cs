@@ -22,14 +22,21 @@ namespace SocialMedia.Services
             var entity =
                 new Reply()
                 {
-                    ReplyAuthorId = model.ReplyAuthorId,
+                    ReplyAuthorId = _userId,
                     ReplyText = model.ReplyText,
                     CommentId = model.CommentId
                 };
 
             using (var context = new ApplicationDbContext())
             {
+                var com =
+                    context
+                        .Comments
+                        .Single(c => c.CommentId == entity.CommentId && c.CommentAuthor == _userId);
+
                 context.Replies.Add(entity);
+                com.Replies.Add(entity);
+
                 return context.SaveChanges() == 1;
             }
         }
@@ -69,6 +76,27 @@ namespace SocialMedia.Services
                         ReplyId = entity.ReplyId,
                         ReplyText = entity.ReplyText
                     };
+            }
+        }
+
+        // get replies by comment id
+        public IEnumerable<ReplyDetail> GetRepliesByCommentId(int commentId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query =
+                    context
+                        .Replies
+                        .Where(e => e.ReplyAuthorId == _userId && e.CommentId == commentId)
+                        .Select(
+                            entity =>
+                                new ReplyDetail
+                                {
+                                    ReplyId = entity.ReplyId,
+                                    ReplyText = entity.ReplyText
+                                }
+                            );
+                return query.ToArray();
             }
         }
 
