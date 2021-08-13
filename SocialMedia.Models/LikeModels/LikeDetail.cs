@@ -1,12 +1,19 @@
-﻿using System;
+﻿using SocialMedia.Data;
+using SocialMedia.Models.PostModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SocialMedia.Models.LikeModels
 {
-    class LikeDetail
+    public class LikeDetail
     {
+        [Required]
+        public int LikeId { get; set; }
+
+        public string PostTitle { get; set; }
     }
 }

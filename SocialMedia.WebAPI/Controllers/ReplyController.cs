@@ -12,6 +12,13 @@ namespace SocialMedia.WebAPI.Controllers
 {
     public class ReplyController : ApiController
     {
+        private ReplyService CreateReplyService()
+        {
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var ReplyService = new ReplyService(userID);
+            return ReplyService;
+        }
+
         public IHttpActionResult Get()
         {
             ReplyService replyService = CreateReplyService();
@@ -19,7 +26,7 @@ namespace SocialMedia.WebAPI.Controllers
             return Ok(replies);
         }
 
-        public IHttpActionResult Reply(ReplyCreate reply)
+        public IHttpActionResult Post(ReplyCreate reply)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -32,12 +39,6 @@ namespace SocialMedia.WebAPI.Controllers
             return Ok();
         }
 
-        private ReplyService CreateReplyService()
-        {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var ReplyService = new ReplyService(userID);
-            return ReplyService;
-        }
 
         public IHttpActionResult Get(int id)
         {

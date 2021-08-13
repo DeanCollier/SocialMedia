@@ -30,7 +30,15 @@ namespace SocialMedia.Services
 
             using (var context = new ApplicationDbContext())
             {
+                var post =
+                    context
+                        .Posts
+                        .Single(p => p.PostId == entity.PostId && p.AuthorId == _userId);
+
+
                 context.Comments.Add(entity);
+                post.Comments.Add(entity);
+
                 return context.SaveChanges() == 1;
             }
         }
@@ -57,9 +65,33 @@ namespace SocialMedia.Services
             }
         }
 
+        // get by post id
+        public IEnumerable<CommentNoPost> GetCommentsByPostId(int postId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query =
+                    context
+                        .Comments
+                        .Where(entity => entity.CommentAuthor == _userId && entity.PostId == postId)
+                        .Select(
+                            entity =>
+                                new CommentNoPost
+                                {
+                                    CommentId = entity.CommentId,
+                                    CommentText = entity.CommentText,
+                                }
+                        );
+                return query.ToArray();
+            }
+        }
+
         // GET
         public CommentDetail GetCommentById(int id)
         {
+            var replyService = new ReplyService(_userId);
+            var postService = new PostService(_userId);
+
             using (var context = new ApplicationDbContext())
             {
                 var entity =
@@ -67,13 +99,16 @@ namespace SocialMedia.Services
                         .Comments
                         .Single(e => e.CommentAuthor == _userId && e.CommentId == id);
 
+                var replies = replyService.GetRepliesByCommentId(entity.CommentId);
+                var post = postService.GetPostByCommentId(id);
+
                 return
                     new CommentDetail
                     {
                         CommentId = entity.CommentId,
                         CommentText = entity.CommentText,
-                        Replies = entity.Replies,
-                        Post = entity.Post
+                        Replies = replies,
+                        Post = post
                     };
             }
         }
