@@ -69,7 +69,9 @@ namespace SocialMedia.Services
                     ctx
                         .Posts
                         .Single(e => e.PostId == id && e.AuthorId == _userId);
+
                 var comments = commentService.GetCommentsByPostId(entity.PostId);
+
                 return
                     new PostDetail
                     {
@@ -82,6 +84,55 @@ namespace SocialMedia.Services
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
 
+                    };
+            }
+        }
+
+
+        public PostListItem GetPostByCommentId(int commentId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var com =
+                    ctx
+                        .Comments
+                        .Single(c => c.CommentId == commentId && c.CommentAuthor == _userId);
+
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.AuthorId == _userId && e.PostId == com.PostId);
+
+                return
+                    new PostListItem
+                    {
+                        PostId = entity.PostId,
+                        Title = entity.Title,
+                        CreatedUtc = entity.CreatedUtc
+                    };
+            }
+        }
+
+        public PostListItem GetPostByLikeId(int likeId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var like =
+                    ctx
+                        .Likes
+                        .Single(l => l.LikeId == likeId && l.LikeAuthor == _userId);
+
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.AuthorId == _userId && e.PostId == like.PostId);
+
+                return
+                    new PostListItem
+                    {
+                        PostId = entity.PostId,
+                        Title = entity.Title,
+                        CreatedUtc = entity.CreatedUtc
                     };
             }
         }

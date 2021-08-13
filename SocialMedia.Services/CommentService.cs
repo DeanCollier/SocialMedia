@@ -89,6 +89,9 @@ namespace SocialMedia.Services
         // GET
         public CommentDetail GetCommentById(int id)
         {
+            var replyService = new ReplyService(_userId);
+            var postService = new PostService(_userId);
+
             using (var context = new ApplicationDbContext())
             {
                 var entity =
@@ -96,13 +99,16 @@ namespace SocialMedia.Services
                         .Comments
                         .Single(e => e.CommentAuthor == _userId && e.CommentId == id);
 
+                var replies = replyService.GetRepliesByCommentId(entity.CommentId);
+                var post = postService.GetPostByCommentId(id);
+
                 return
                     new CommentDetail
                     {
                         CommentId = entity.CommentId,
                         CommentText = entity.CommentText,
-                        Replies = entity.Replies,
-                        Post = entity.Post
+                        Replies = replies,
+                        Post = post
                     };
             }
         }

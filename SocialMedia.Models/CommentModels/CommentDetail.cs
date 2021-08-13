@@ -1,4 +1,6 @@
 ﻿using SocialMedia.Data;
+using SocialMedia.Models.PostModels;
+using SocialMedia.Models.ReplyModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,9 +16,9 @@ namespace SocialMedia.Models.CommentModels
 
         public string CommentText { get; set; }
 
-        public virtual List<Reply> Replies { get; set; }
+        public virtual IEnumerable<ReplyDetail> Replies { get; set; }
 
-        public virtual Post Post { get; set; }
+        public PostListItem Post { get; set; }
 
     }
 }
