@@ -30,7 +30,15 @@ namespace SocialMedia.Services
 
             using (var context = new ApplicationDbContext())
             {
+                var post =
+                    context
+                        .Posts
+                        .Single(p => p.PostId == entity.PostId && p.AuthorId == _userId);
+
+
                 context.Comments.Add(entity);
+                post.Comments.Add(entity);
+
                 return context.SaveChanges() == 1;
             }
         }
@@ -51,6 +59,27 @@ namespace SocialMedia.Services
                                     CommentId = entity.CommentId,
                                     PostId = entity.PostId,
                                     NumberOfReplies = entity.Replies.Count()
+                                }
+                        );
+                return query.ToArray();
+            }
+        }
+
+        // get by post id
+        public IEnumerable<CommentNoPost> GetCommentsByPostId(int postId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query =
+                    context
+                        .Comments
+                        .Where(entity => entity.CommentAuthor == _userId && entity.PostId == postId)
+                        .Select(
+                            entity =>
+                                new CommentNoPost
+                                {
+                                    CommentId = entity.CommentId,
+                                    CommentText = entity.CommentText,
                                 }
                         );
                 return query.ToArray();

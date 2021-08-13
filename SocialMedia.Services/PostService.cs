@@ -62,18 +62,23 @@ namespace SocialMedia.Services
 
         public PostDetail GetPostById(int id)
         {
+            var commentService = new CommentService(_userId);
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Posts
                         .Single(e => e.PostId == id && e.AuthorId == _userId);
+                var comments = commentService.GetCommentsByPostId(entity.PostId);
                 return
                     new PostDetail
                     {
                         PostId = entity.PostId,
+                        AuthorId = entity.AuthorId,
                         Title = entity.Title,
                         Text = entity.Text,
+                        Comments = comments,
+                        Likes = entity.Likes,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
 
@@ -89,21 +94,10 @@ namespace SocialMedia.Services
                     ctx
                         .Posts
                         .Single(e => e.PostId == model.PostId && e.AuthorId == _userId);
-                var com =
-                    ctx
-                        .Comments
-                        .Single(c => c.CommentId == model.CommentId && c.CommentAuthor == _userId);
-
-                var like =
-                    ctx
-                        .Likes
-                        .Single(l => l.LikeId == model.LikeId && l.LikeAuthor == _userId);
 
                 entity.Title = model.Title;
                 entity.Text = model.Text;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
-                entity.Likes.Add(like);
-                entity.Comments.Add(com);
 
                 return ctx.SaveChanges() == 1;
             }
