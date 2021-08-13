@@ -33,3 +33,5 @@ C:\ElevenFiftyProjects\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Mode
 D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.dll
 D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.pdb
 D:\1150\Week10\SocialMedia\SocialMedia.Models\bin\Debug\SocialMedia.Data.dll.config
+C:\Users\tamar\Source\Repos\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.dll
+C:\Users\tamar\Source\Repos\SocialMedia\SocialMedia.Models\obj\Debug\SocialMedia.Models.pdb
