@@ -1,4 +1,5 @@
 ﻿using SocialMedia.Data;
+using SocialMedia.Models.PostModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,6 @@ namespace SocialMedia.Models.LikeModels
         [Required]
         public int LikeId { get; set; }
 
-        public virtual Post Post { get; set; }
+        public string PostTitle { get; set; }
     }
 }

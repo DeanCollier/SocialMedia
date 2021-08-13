@@ -10,6 +10,6 @@ namespace SocialMedia.Models.LikeModels
     {
         public int LikeId { get; set; }
 
-        public int PostId { get; set; }
+        public string PostTitle { get; set; }
     }
 }
