@@ -12,7 +12,7 @@ This is a collaborative project that uses ASP.NET Web API to create an N-tier ar
 1. Data - houses object classes and database requirements
 2. Models - sets data models to exchange data with the user
 3. Services - performs logic on database objects
-4. WebAPI - uses HTTP calls to Post, Get, Put, and Delete information
+4. WebAPI - uses HTTP methods to Post, Get, Put, and Delete information
 
 ### 2. Git Pull Documentation
 ```
